@@ -1,0 +1,48 @@
+<div>
+    <form>
+        <div class="form-group">
+            <ul class="list-inline">
+                <li ng-repeat="(key, value) in data">
+                    <label>
+                        <input ng-model="forRender.setName" type="radio" ng-value="key" ng-click="useData(key)">
+                        <span ng-bind="key"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input ng-model="forRender.setName" type="radio" value="custom">
+                        <span>custom</span>
+                    </label>
+                </li>
+                <li ng-if="forRender.setName === 'custom'">
+                    <input fileread="iScope.data" type="file" placeholder="Chose some .json">
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label for="items-per-page">Rows per page:</label>
+            <select class="form-control" id="items-per-page" ng-model="itemsPerPage" ng-options="opt for opt in itemsPerPageValues"></select>
+        </div>
+
+        <div class="form-group">
+            <label for="filter">Filter:</label>
+            <input class="form-control" id="filter" placeholder="Filter" type="text" ng-model="search">
+        </div>
+    </form>
+
+    <table ng-show="iScope.dataTableBody" class="table table-striped">
+        <thead>
+        <tr>
+            <th ng-repeat="(key, val) in iScope.dataTableHead" data-key="{{key}}" ng-bind="val" ng-click="sort(key)"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="tr in filtered = (iScope.dataTableBody | filter:search) | startFrom:(currentPage - 1) * itemsPerPage | limitTo:itemsPerPage">
+            <td ng-repeat="td in tr" ng-bind="td"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <uib-pagination items-per-page="itemsPerPage" total-items="filtered.length" ng-model="currentPage" ng-change="pageChanged()"></uib-pagination>
+</div>
