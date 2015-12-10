@@ -1,10 +1,30 @@
 {
-  "name": "angular-test",
-  "ignore": [],
+  "name": "angular-table",
+  "homepage": "https://github.com/sergolius/angular-table",
+  "description": "table,sort,filter,pagination",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "angular",
+    "table",
+    "sort",
+    "filter",
+    "pagination"
+  ],
+  "authors": [
+    "sergolius@gmail.com"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "angular": "*",
-    "angular-bootstrap": "*",
-    "bootstrap": "*",
-    "jquery": "*"
+    "angular": "^1.4.8",
+    "angular-bootstrap": "^0.14.3",
+    "bootstrap": "^3.3.6"
   }
 }
